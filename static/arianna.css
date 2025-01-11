@@ -73,13 +73,13 @@ body {
 
 .arrow-down-icon {
     transition: 0.2s;
+    border-radius: 100%;
     &:hover {
         color: rgb(31, 104, 31);
         scale: 1.1;
+        box-shadow: 0px 0px 15px 1px rgb(169, 169, 169);
     }
 }
-
-
 
 .content-container {
     display: flex;
@@ -133,6 +133,23 @@ body {
     margin-bottom: 10%;
 }
 
+.video-container {
+    position: relative;
+    width: 100%;
+    &:hover {
+        cursor: grab;
+    }
+}
+
+.video-text {
+    position: absolute;
+    left: 12.5%;
+    bottom: 30px;
+    color: white;
+    opacity: 0.5;
+    pointer-events: none
+}
+
 .content-container {
     margin-bottom: 20%;
 }
@@ -146,19 +163,26 @@ body {
 .large-box {
     width: 47.5%;
     margin-left: 10%;
-    background-color: rgb(166, 209, 166);
+    background-color: rgb(67, 103, 213);
     transition: 0.3s;
     cursor: grab;
     &:hover {
         scale: 1.05;
-        box-shadow: 0px 0px 15px 1px rgb(214, 214, 214);
+        box-shadow: 0px 0px 20px 1px rgb(145, 145, 145);
+        filter: saturate(150%);
+    }
+    &:hover .box-title {
+        color: rgb(180, 0, 141);
+        transform: translateX(15px);
     }
 }
 
 .small-box {
     width: 27.5%;
     margin-right: 10%;
-    background-color: rgb(167, 167, 199);
+    background-image: url("media/content-image.png");
+    background-size: cover;
+    color: transparent;
 }
 
 .box-title {
@@ -170,9 +194,6 @@ body {
     border: 0;
     background-color: transparent;
     cursor: grab;
-    &:hover {
-        color: black;
-    }
 }
 
 .box-text {

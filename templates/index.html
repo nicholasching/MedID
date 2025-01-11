@@ -39,7 +39,10 @@
         </div>
         <h2 class="webcam-title">Introducing <span style="color: rgb(255, 196, 0);">Project</span>,<br> a face recognitition healthcare tool</h2>
         <p class="webcam-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus delectus fugiat fugit adipisci id cupiditate accusantium excepturi.</p>
-        <img src="/video_feed" id="video_stream" class="webcam-preview">
+        <div class="video-container">
+            <img src="/video_feed" id="video_stream" class="webcam-preview" onclick="toggleFullscreen()">
+            <h3 class="video-text">Click To Fullscreen</h3>
+        </div>
     </div>
 
     <div class="content-container">
@@ -88,6 +91,32 @@
             behavior: "smooth",
             });
         })
+
+        function toggleFullscreen() {
+        const elem = document.getElementById('video_stream');
+
+        if (!document.fullscreenElement) {
+            if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+            elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari */
+            elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+            elem.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+            document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+            }
+        }
+        }
 
     </script>
 
