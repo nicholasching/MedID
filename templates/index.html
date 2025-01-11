@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeltaHacks 11</title>
+
+    <link rel="stylesheet" href="static/styles.css">
+
+    <link rel="stylesheet" href="static/arianna.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <div class="landing-container">
+        <h1 class="landing-title">MedID</h1>
+        <p class="landing-text">A Deltahacks Project</p>
+    </div>
+
+
+    <div class="webcam-container">
+        <div class="infinite-scroller">
+            <ul>
+                <li>
+                    <span class="infinite-scroller-text">DRIVING HEALTHCARE WITH AI</span>
+                </li>
+            </ul>
+            <ul aria-hidden="true">
+                <li>
+                    <span class="infinite-scroller-text">DRIVING HEALTHCARE WITH AI</span>
+                </li>
+            </ul>
+        </div>
+        <h2 class="webcam-title">Introducing <span style="color: rgb(255, 196, 0);">Project</span>,<br> a face recognitition healthcare tool</h2>
+        <p class="webcam-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus delectus fugiat fugit adipisci id cupiditate accusantium excepturi.</p>
+        <img src="/video_feed" id="video_stream" class="webcam-preview">
+    </div>
+
+    <div class="content-container">
+        <div class="large-box box visible" id="largeBoxFront"><h3 class="box-title">Learn More <i class="fa-solid fa-arrow-right"></i></h3></div>
+        <div class="large-box box not-visible" id="largeBoxBack"><h3 class="box-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur perspiciatis doloremque sequi minima sint dolor quas culpa, laudantium corporis ex iusto totam itaque perferendis voluptate laborum aliquid quo repudiandae magni.</h3></div>
+        <div class="small-box box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime earum eos ea sint deleniti fugiat asperiores, repellendus doloremque ipsa, rem error, quas recusandae inventore quasi laboriosam neque aspernatur fuga. Recusandae.</div>
+    </div>
+
+    <div class="footer-container">
+        January 2025 / Project by Arianna Ansari, Katelyn Li, Nicholas Ching, and Dylan Li
+    </div>
+
+    <script>
+        const webcam = document.querySelector('#webcamPreview');
+
+        window.navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            webcam.srcObject = stream;
+            webcam.onloadedmetadata = (e) => {
+                webcam.play();
+            };
+        })
+
+        const largeBoxFront = document.getElementById("largeBoxFront");
+        const largeBoxBack = document.getElementById("largeBoxBack");
+
+        largeBoxFront.addEventListener("click", () => {
+            largeBoxFront.classList.remove("visible");
+            largeBoxFront.classList.add("not-visible");
+            largeBoxBack.classList.remove("not-visible");
+            largeBoxBack.classList.add("visible");
+        });
+
+        largeBoxBack.addEventListener("click", () => {
+            largeBoxBack.classList.remove("visible");
+            largeBoxBack.classList.add("not-visible");
+            largeBoxFront.classList.remove("not-visible");
+            largeBoxFront.classList.add("visible");
+        });
+
+    </script>
+
+</body>
+</html>
+
