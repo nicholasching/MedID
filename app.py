@@ -119,7 +119,7 @@ def generate_frames():
         else:
             print((time.time() - lastFailTime))
             if not (time.time() - lastFailTime) < 3 and isSaving:
-                cv2.imwrite("temp.jpg", frame)
+                cv2.imwrite("temp.jpg", croppedFrame)
                 isSaving = False
 
         # Convert frame to JPEG format
@@ -135,7 +135,6 @@ def video_feed():
 @app.route('/await_client/', methods=['POST'])
 def await_client():
     while True:
-        print("Access")
         if(os.path.exists("temp.jpg")):
             break
     return ""
