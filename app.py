@@ -96,9 +96,10 @@ def process_frames(frame):
             if class_id in classNames:
                 label = classNames[class_id] + ": " + str(confidence)
                 if(classNames[class_id] == "person" and confidence > tolerance):
-                    cv2.putText(frame, "Person Detected", (frame.shape[1] - 200, frame.shape[0] - 25), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255))
+                    cv2.putText(frame, "Person Detected", (25, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.2*heightFactor, (255, 255, 255))
                 print(label) #print class and confidence
-                return label
+                croppedFrame = frame[yLeftBottom:yRightTop, xLeftBottom:xRightTop]
+                return croppedFrame
 
 def generate_frames():
     while True:
@@ -107,7 +108,7 @@ def generate_frames():
             break
 
         # Processing Frames
-        label = process_frames(frame)
+        croppedFrame = process_frames(frame)
 
         # Convert frame to JPEG format
         _, buffer = cv2.imencode('.jpg', frame) 
@@ -117,8 +118,7 @@ def generate_frames():
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(generate_frames(),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/')
 def home():
