@@ -33,21 +33,5 @@ def video_feed():
 def home():
     return render_template('index.html')
 
-
-# @app.route('/')
-# def index():
-#     return """
-#     <html>
-#     <head>
-#         <title>Live Video Stream</title>
-#     </head>
-#     <body>
-#         <h1>Live Video Stream</h1>
-#         <img src="/video_feed" id="video_stream">
-#     </body>
-#     </html>
-#     """
-
-
 if __name__ == '__main__':
     app.run(debug=True)
