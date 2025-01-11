@@ -1,21 +1,114 @@
-:root { 
-    --font-standard: clamp(100px, 10px, 1000px)
-}
-
-.center{ 
-    margin: auto; 
-    width: 50px; 
-    border: 3px white; 
-    padding: 10px;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-}
-
-
 body { 
-    font: helvectica; 
-    font-size: var(--font-standard); 
-    background-color: #CCE6F4;
+    background-color: #efefef;
+    font-family: "Inter", serif;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+
+:root { 
+    --font-small: clamp(100px, 10px, 1000px);
+    --font-smaller: clamp(100px, 10px, 1000px);
+    --font-standard: clamp(1rem, 3vw, 5rem);
+    --font-bigger: clamp(3rem, 4vw, 7rem);
+    --font-big: clamp(5rem, 10vw, 10rem);
+}
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 20% 0 20%;
+}
+
+.landing-title {
+    font-size: var(--font-big);
+
+}
+
+.landing-text {
+    font-size: var(--font-standard);
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.webcam-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.webcam-preview {
+    width: 80%;
+    border-radius: 20px;
+}
+
+.webcam-title {
+    font-size: var(--font-bigger);
+    line-height: 75px;
+    margin-bottom: 30px;
+}
+
+.webcam-text {
+    width: 40%;
+    margin-bottom: 10%;
+}
+
+.content-container {
+    margin-bottom: 10%;
+}
+
+.box {
+    position: relative;
+    padding: 5%;
+    border-radius: 20px;
+}
+
+.large-box {
+    width: 47.5%;
+    margin-left: 10%;
+    background-color: rgb(166, 209, 166);
+    transition: 0.3s;
+    &:hover {
+        scale: 1.05;
+    }
+}
+
+.small-box {
+    width: 27.5%;
+    margin-right: 10%;
+    background-color: rgb(167, 167, 199);
+}
+
+.box-title {
+    font-size: var(--font-bigger);
+    position: absolute;
+    bottom: 15%;
+    color: white;
+    transition: 0.3s;
+    border: 0;
+    background-color: transparent;
+    &:hover {
+        color: black;
+    }
+}
+
+.visible {
+    display: block;
+}
+
+.not-visible {
+    display: none;
+}
