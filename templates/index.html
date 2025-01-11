@@ -18,12 +18,25 @@
 </head>
 <body>
     <div class="landing-container">
-        <h1 class="landing-title">Project Name</h1>
-        <p class="landing-text">This project... / By...</p>
+        <h1 class="landing-title">MedID</h1>
+        <p class="landing-text">A Deltahacks Project</p>
+        <div class="arrow-down" id="arrowButton"><i class="fa-solid fa-circle-arrow-down arrow-down-icon"></i></div>
     </div>
 
 
     <div class="webcam-container">
+        <div class="infinite-scroller">
+            <ul>
+                <li>
+                    <span class="infinite-scroller-text">DRIVING HEALTHCARE WITH AI</span>
+                </li>
+            </ul>
+            <ul aria-hidden="true">
+                <li>
+                    <span class="infinite-scroller-text">DRIVING HEALTHCARE WITH AI</span>
+                </li>
+            </ul>
+        </div>
         <h2 class="webcam-title">Introducing <span style="color: rgb(255, 196, 0);">Project</span>,<br> a face recognitition healthcare tool</h2>
         <p class="webcam-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus delectus fugiat fugit adipisci id cupiditate accusantium excepturi.</p>
         <img src="/video_feed" id="video_stream" class="webcam-preview">
@@ -31,8 +44,12 @@
 
     <div class="content-container">
         <div class="large-box box visible" id="largeBoxFront"><h3 class="box-title">Learn More <i class="fa-solid fa-arrow-right"></i></h3></div>
-        <div class="large-box box not-visible" id="largeBoxBack"><h3 class="box-title">BCAKCKACKACK<i class="fa-solid fa-arrow-right"></i></h3></div>
+        <div class="large-box box not-visible" id="largeBoxBack"><h3 class="box-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur perspiciatis doloremque sequi minima sint dolor quas culpa, laudantium corporis ex iusto totam itaque perferendis voluptate laborum aliquid quo repudiandae magni.</h3></div>
         <div class="small-box box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime earum eos ea sint deleniti fugiat asperiores, repellendus doloremque ipsa, rem error, quas recusandae inventore quasi laboriosam neque aspernatur fuga. Recusandae.</div>
+    </div>
+
+    <div class="footer-container">
+        January 2025 / Project by Arianna Ansari, Katelyn Li, Nicholas Ching, and Dylan Li
     </div>
 
     <script>
@@ -45,9 +62,6 @@
                 webcam.play();
             };
         })
-        .catch( () => {
-            alert('Reload the browser and hit allow.');
-        });
 
         const largeBoxFront = document.getElementById("largeBoxFront");
         const largeBoxBack = document.getElementById("largeBoxBack");
@@ -65,6 +79,15 @@
             largeBoxFront.classList.remove("not-visible");
             largeBoxFront.classList.add("visible");
         });
+
+        const arrowButton = document.getElementById("arrowButton");
+
+        arrowButton.addEventListener("click", () => {
+            window.scrollBy({
+            top: 750,
+            behavior: "smooth",
+            });
+        })
 
     </script>
 
