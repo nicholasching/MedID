@@ -8,6 +8,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-weight: 400;
+    /* border: 1px solid black; */
 }
 
 :root { 
@@ -35,12 +36,24 @@ body {
     }
 }
 
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 .landing-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin: 20% 0 20%;
+    margin: 20% 0 15%;
 }
 
 .landing-title {
@@ -50,7 +63,23 @@ body {
 
 .landing-text {
     font-size: var(--font-standard);
+    margin-bottom: 10%;
 }
+
+.arrow-down {
+    font-size: var(--font-bigger);
+    animation: bounce 1s infinite;
+}
+
+.arrow-down-icon {
+    transition: 0.2s;
+    &:hover {
+        color: rgb(31, 104, 31);
+        scale: 1.1;
+    }
+}
+
+
 
 .content-container {
     display: flex;
@@ -122,6 +151,7 @@ body {
     cursor: grab;
     &:hover {
         scale: 1.05;
+        box-shadow: 0px 0px 15px 1px rgb(214, 214, 214);
     }
 }
 

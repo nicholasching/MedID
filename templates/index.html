@@ -20,6 +20,7 @@
     <div class="landing-container">
         <h1 class="landing-title">MedID</h1>
         <p class="landing-text">A Deltahacks Project</p>
+        <div class="arrow-down" id="arrowButton"><i class="fa-solid fa-circle-arrow-down arrow-down-icon"></i></div>
     </div>
 
 
@@ -78,6 +79,15 @@
             largeBoxFront.classList.remove("not-visible");
             largeBoxFront.classList.add("visible");
         });
+
+        const arrowButton = document.getElementById("arrowButton");
+
+        arrowButton.addEventListener("click", () => {
+            window.scrollBy({
+            top: 750,
+            behavior: "smooth",
+            });
+        })
 
     </script>
 
