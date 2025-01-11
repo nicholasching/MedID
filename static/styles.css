@@ -1,6 +1,6 @@
 body {
     font-family: Arial;
-    background-color: white;
+    background-color: black;
 }
 
 * {
@@ -9,8 +9,12 @@ body {
     box-sizing: border-box;
 }
 
+h1 {
+    font-size: 10000px;
+}
+
 :root {
-    --font-standard: clamp(100px,,1000px)
+    --font-standard: clamp(100px,10vw,1000px);
 }
 
 .stream-container {
@@ -18,4 +22,5 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    font-size: var(--font-standard);
 }
