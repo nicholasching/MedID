@@ -132,16 +132,18 @@ def generate_frames():
 def video_feed():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/await_client')
+@app.route('/await_client/', methods=['POST'])
 def await_client():
     while True:
+        print("Access")
         if(os.path.exists("temp.jpg")):
             break
-    return True
+    return ""
 
-@app.route('/fetch_details')
+@app.route('/fetch_details/', methods=['POST'])
 def fetch_details():
-    pass
+    print("DONE!")
+    return ""
 
 @app.route('/')
 def home():
