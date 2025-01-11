@@ -1,5 +1,6 @@
 body {
     font-family: Arial;
+    background-color: white;
 }
 
 * {
@@ -8,26 +9,13 @@ body {
     box-sizing: border-box;
 }
 
+:root {
+    --font-standard: clamp(100px,,1000px)
+}
+
 .stream-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    flex-direction: column;
     width: 100%;
-    margin: 0 20%;
-    background-color: black;
-}
-
-.box {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: green;
-    color: green;
-}
-
-.webcam-preview {
-    width: 100%;
-    position: relative;
 }
