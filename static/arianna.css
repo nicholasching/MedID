@@ -12,15 +12,10 @@
     justify-content: center; 
 }
 
-html { 
-    scroll-snap-type: y mandatory;
-    scroll-padding-top: 30px; 
-}
 
 body { 
     font: helvectica; 
-
-    background-color: #000000;
     font-size: var(--font-standard); 
+    background-color: #CCE6F4;
 }
 
