@@ -10,7 +10,7 @@ body {
 }
 
 :root {
-    --font-standard: clamp(100px,,1000px)
+    --font-standard: clamp(100px,10vw,1000px);
 }
 
 .stream-container {
@@ -18,4 +18,5 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    font-size: var(--font-standard);
 }
