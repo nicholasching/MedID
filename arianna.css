@@ -1,0 +1,26 @@
+:root { 
+    --font-standard: clamp(100px, 10px, 1000px)
+}
+
+.center{ 
+    margin: auto; 
+    width: 50px; 
+    border: 3px white; 
+    padding: 10px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+html { 
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 30px; 
+}
+
+body { 
+    font: helvectica; 
+    
+    background-color: #CCE6F4;
+    font-size: var(--font-standard); 
+}
+
