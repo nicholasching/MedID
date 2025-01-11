@@ -1,6 +1,7 @@
 from flask import Flask, Response, render_template
 import cv2
 import time
+import os
 import numpy as np
 
 app = Flask(__name__)
@@ -14,7 +15,7 @@ if not video_source.isOpened():
     exit()
 
 # Adjustment Tolerances
-tolerance = 0.8
+tolerance = 0.9
 
 #Import the neccesary libraries
 import numpy as np
@@ -95,20 +96,31 @@ def process_frames(frame):
             # Print label and confidence of prediction
             if class_id in classNames:
                 label = classNames[class_id] + ": " + str(confidence)
+                print(label) #print class and confidence
                 if(classNames[class_id] == "person" and confidence > tolerance):
                     cv2.putText(frame, "Person Detected", (25, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.2*heightFactor, (255, 255, 255))
-                print(label) #print class and confidence
-                croppedFrame = frame[yLeftBottom:yRightTop, xLeftBottom:xRightTop]
-                return croppedFrame
+                    croppedFrame = frame[yLeftBottom:yRightTop, xLeftBottom:xRightTop]
+                    return croppedFrame
 
 def generate_frames():
-    while True:
+    isCapturing = True
+    isSaving = True
+    lastFailTime = time.time()
+    while isCapturing:
         success, frame = video_source.read()
         if not success:
             break
 
         # Processing Frames
         croppedFrame = process_frames(frame)
+
+        if type(croppedFrame) != np.ndarray:
+            lastFailTime = time.time()
+        else:
+            print((time.time() - lastFailTime))
+            if not (time.time() - lastFailTime) < 3 and isSaving:
+                cv2.imwrite("temp.jpg", frame)
+                isSaving = False
 
         # Convert frame to JPEG format
         _, buffer = cv2.imencode('.jpg', frame) 
@@ -119,6 +131,17 @@ def generate_frames():
 @app.route('/video_feed')
 def video_feed():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/await_client')
+def await_client():
+    while True:
+        if(os.path.exists("temp.jpg")):
+            break
+    return True
+
+@app.route('/fetch_details')
+def fetch_details():
+    pass
 
 @app.route('/')
 def home():
