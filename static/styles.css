@@ -12,7 +12,7 @@ body {
 }
 
 :root { 
-    --font-small: clamp(100px, 1px, 1000px);
+    --font-small: clamp(5px, 1.2vw, 3rem);
     --font-smaller: clamp(10px, 1.4vw, 5rem);
     --font-standard: clamp(1rem, 1.5vw, 7rem);
     --font-bigger: clamp(3rem, 4vw, 10rem);
@@ -281,19 +281,20 @@ body {
 .label-container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 10px;
 }
 
 label {
-    font-size: var(--font-standard);
+    font-size: var(--font-small);
     font-weight: 300;
     color: white;
+
 }
 
 input {
     background-color: transparent;
-    font-size: var(--font-standard);
-    border: white inset 1px;
+    font-size: var(--font-small);
+    border: none;
 }
 
 .return-button {

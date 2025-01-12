@@ -19,12 +19,23 @@
         <img id="myImage" src="static/media/temp.jpg" class="profile-image">
         <div class="label-container">
 
-            <label>ID Number: <input type="text" id="hashcode" value=""></label>
+            <label id="hashcode"></label>
             <label>Name: <input type="text" id="name" value=""></label>
+            <label>Birthday: <input type="text" id="birthday" value=""></label>
+            <label>Gender: <input type="text" id="gender" value=""></label>
+            <label>Height (cm): <input type="text" id="height" value=""></label>
+            <label>Weight: <input type="text" id="weight" value=""></label>
+            <label>Blood Type: <input type="text" id="blood" value=""></label>
+            <label>Medical Conditions: <input type="text" id="conditions" value=""></label>
+            <label>Medication: <input type="text" id="medications" value=""></label>
+            <label>Address: <input type="text" id="address" value=""></label>
+            <label>Emergency Contact <input type="text" id="emergency" value=""></label>
+            <label id="update"></label>
+            <button onclick="updateArray()">Update</button>
         </div>
     </div>
 
-    <button class="return-button" onclick="history.back()"><i class="fa-solid fa-arrow-left icon"></i> Return</button>
+    <a class="return-button" href="/"><i class="fa-solid fa-arrow-left icon"></i> Return</a>
 
     <script>
         let patientInfo = []*20;
@@ -40,11 +51,45 @@
                 patientInfo = result.split(",");
                 console.log(patientInfo)
             }
-            const hashcodeInput = document.getElementById("hashcode");
-            hashcodeInput.value = patientInfo[0]; 
+            document.getElementById("hashcode").innerHTML = "Medical Info: " + patientInfo[0];
+            
+            const name = document.getElementById("name");
+            name.value = patientInfo[1]; 
 
-            const nameInput = document.getElementById("name");
-            nameInput.value = patientInfo[1]; 
+            const birthday = document.getElementById("birthday");
+            birthday.value = patientInfo[2]; 
+
+            const gender = document.getElementById("gender");
+            gender.value = patientInfo[3]; 
+
+            const height = document.getElementById("height");
+            height.value = patientInfo[4]; 
+
+            const weight = document.getElementById("weight");
+            weight.value = patientInfo[5]; 
+
+            const blood = document.getElementById("blood");
+            blood.value = patientInfo[6]; 
+
+            const conditions = document.getElementById("conditions");
+            conditions.value = patientInfo[7]; 
+
+            const medications = document.getElementById("medications");
+            medications.value = patientInfo[8];
+
+            const address = document.getElementById("address");
+            address.value = patientInfo[9]; 
+
+            const emergency = document.getElementById("emergency");
+            emergency.value = patientInfo[10]; 
+
+            document.getElementById("update").innerHTML = "Last Update: " + patientInfo[11];
+        }
+
+        function updateArray() {
+        const nameInput = document.getElementById("name");
+        patientInfo[1] = nameInput.value; 
+        console.log(patientInfo); // Output: Updated array 
         }
 
 
