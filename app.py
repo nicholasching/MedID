@@ -154,5 +154,9 @@ def fetch_details():
 def home():
     return render_template('index.html')
 
+@app.route('/patientinfo')
+def patient():
+    return render_template('medical-information.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -40,7 +40,8 @@
         <h2 class="webcam-title">Introducing <span style="color: rgb(255, 196, 0);">Project</span>,<br> a face recognitition healthcare tool</h2>
         <p class="webcam-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus delectus fugiat fugit adipisci id cupiditate accusantium excepturi.</p>
         <div class="video-container">
-            <img src="/video_feed" id="video_stream" class="webcam-preview" onclick="toggleFullscreen()">
+            <img src="/video_feed" id="video_stream" class="webcam-preview visible" onclick="toggleFullscreen()" id="webcamPreview">
+            <div class="webcam-preview not-visible" style="padding: 10%;" id="medicalInformation">Med information Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae esse delectus quos aut aliquam reprehenderit consequuntur ea, placeat incidunt! Tenetur sit laudantium odio illo praesentium. Magnam minus deserunt perspiciatis esse?</div>
             <h3 class="video-text">Demonstration</h3>
         </div>
     </div>
@@ -59,6 +60,7 @@
 
     <script>
         const webcam = document.querySelector('#webcamPreview');
+        let patientInfo = [20]
 
         window.navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
@@ -80,7 +82,20 @@
             const response = await fetch("/fetch_details/", {
                 method: "POST",
             });
-            let result = await response;
+            let result = await response.text();
+            console.log(result)
+            if (result != "False"){
+                patientInfo = result.split(",");
+                console.log(patientInfo)
+
+                window.location.href = "/patientinfo";
+            }
+            else{
+                patientInfo[0] = "null"
+            }
+
+
+
         }
 
         awaitClient()

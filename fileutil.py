@@ -11,7 +11,11 @@ class FileUtil:
             people = []
             for line in peopleFile:
                 people.append(line)
-            returnStatement = people[int(index)]
+            try:
+                returnStatement = people[int(index)]
+            except:
+                peopleFile.close()
+                return "False"
             peopleFile.close()
             print(returnStatement)
             return returnStatement
