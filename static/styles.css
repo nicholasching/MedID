@@ -12,11 +12,11 @@ body {
 }
 
 :root { 
-    --font-small: clamp(100px, 10px, 1000px);
-    --font-smaller: clamp(10px, 1vw, 1rem);
-    --font-standard: clamp(1rem, 1.5vw, 5rem);
-    --font-bigger: clamp(3rem, 4vw, 7rem);
-    --font-big: clamp(5rem, 10vw, 10rem);
+    --font-small: clamp(100px, 1px, 1000px);
+    --font-smaller: clamp(10px, 1.4vw, 5rem);
+    --font-standard: clamp(1rem, 1.5vw, 7rem);
+    --font-bigger: clamp(3rem, 4vw, 10rem);
+    --font-big: clamp(5rem, 10vw, 13rem);
 }
 
 @keyframes scroll {
@@ -100,7 +100,6 @@ body {
 
 .landing-title {
     font-size: var(--font-big);
-
 }
 
 .landing-text {
@@ -108,7 +107,7 @@ body {
     margin-bottom: 10%;
 }
 
-.dinosaur-image {
+.dinosaur-image-1 {
     position: absolute;
     width: 10%;
     animation: dinosaurMovement 20s infinite;
@@ -227,7 +226,7 @@ body {
 .frame-image {
     position: absolute;
     width: 35%;
-    animation: pulse infinite 1.75s;
+    animation: pulse infinite 2.5s;
     transform: translateY(-30%);
 }
 
@@ -264,11 +263,57 @@ body {
 }
 
 .medical-information-container {
-    width: 100%;
-    margin: 0 10%;
-    background-color: black;
+    margin: 10% 15%;
+    display: flex;
+    background-color: #335686;
+    padding: 3%;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
 }
 
-.image-container {
-    width: 100%;
+.profile-image {
+    width: 30%;
+    border-radius: 10px;
+}
+
+.label-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+label {
+    font-size: var(--font-standard);
+    font-weight: 300;
+    color: white;
+}
+
+input {
+    background-color: transparent;
+    font-size: var(--font-standard);
+    border: white inset 1px;
+}
+
+.return-button {
+    position: fixed;
+    left: 50px;
+    bottom: 50px;
+    font-size: var(--font-smaller);
+    border: 0;
+    background-color: transparent;
+    transition: 0.2s;
+    padding: 10px;
+    border-radius: 10px;
+    &:hover {
+        background-color: rgb(225, 225, 225);
+        scale: 1.1;
+    }
+    .icon {
+        transition: 0.2s;
+    }
+    &:hover > .icon {
+        transform: rotate(45deg);
+    }
 }

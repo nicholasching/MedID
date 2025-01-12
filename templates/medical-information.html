@@ -16,11 +16,18 @@
 </head>
 <body>
     <div class="medical-information-container">
-        <img id="myImage" src="static/media/temp.jpg" class="image-container">
+        <img id="myImage" src="static/media/temp.jpg" class="profile-image">
+        <div class="label-container">
+
+            <label>ID Number: <input type="text" id="hashcode" value=""></label>
+            <label>Name: <input type="text" id="name" value=""></label>
+        </div>
     </div>
 
+    <button class="return-button" onclick="history.back()"><i class="fa-solid fa-arrow-left icon"></i> Return</button>
+
     <script>
-        let patientInfo = [20];
+        let patientInfo = []*20;
         getDetails();
 
         async function getDetails(){
@@ -33,7 +40,14 @@
                 patientInfo = result.split(",");
                 console.log(patientInfo)
             }
+            const hashcodeInput = document.getElementById("hashcode");
+            hashcodeInput.value = patientInfo[0]; 
+
+            const nameInput = document.getElementById("name");
+            nameInput.value = patientInfo[1]; 
         }
+
+
         
     </script>
 </body>

@@ -19,7 +19,7 @@ class FileUtil:
                 people.append(line)
             try:
                 returnStatement = people[int(index)]
-                shutil.copy(f"{returnStatement.split(",")[0]}.jpg", "static/media/temp.jpg")
+                shutil.copy(f"{returnStatement.split(',')[0]}.jpg", "static/media/temp.jpg")
             except:
                 peopleFile.close()
                 return "False"
