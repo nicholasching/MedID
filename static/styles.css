@@ -131,23 +131,49 @@ body {
     }
 }
 
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes jitter {
+    20% {
+        transform: rotate(1deg) translate(1px);
+    }
+    50% {
+        transform: rotate(-3deg) translate(5px, 10px);
+    }
+    70% {
+        transform: translate(-5px, -5px);
+    }
+    to {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
 .landing-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     margin: 20% 0 15%;
-    animation: fadeIn 2s forwards;
+    /* animation: fadeIn 2s forwards; */
 }
 
 .landing-title {
     font-family: "Inconsolata", serif;
     font-size: var(--font-big);
+    animation: jitter 10s infinite linear, fade 2s forwards;
 }
 
 .landing-text {
     font-size: var(--font-standard);
     margin-bottom: 10%;
+    animation: jitter 10s infinite linear, fade 2s forwards;
 }
 
 .dinosaur-image {
@@ -262,9 +288,10 @@ body {
 }
 
 .large-box {
+    position: relative;
     width: 47.5%;
     margin-left: 10%;
-    background-color: #335686;
+    background-color: #a3adbc;
     transition: 0.3s;
     cursor: grab;
     &:hover {
@@ -273,7 +300,10 @@ body {
         filter: saturate(150%);
     }
     &:hover .box-title {
-        color: #f4b52a;
+        color: #335686;
+        transform: translateX(15px);
+    }
+    &:hover .large-box-text {
         transform: translateX(15px);
     }
 }
@@ -291,6 +321,21 @@ body {
     background-size: cover; 
 }
 
+.dinosaur-image-5 {
+    position: absolute;
+    width: 20%;
+    top: 5%;
+    left: 10%;
+}
+
+.dinosaur-image-6 {
+    position: absolute;
+    width: 20%;
+    bottom: 5%;
+    right: 10%;
+    transform: rotate(30deg) scaleX(-1);
+}
+
 .frame-image {
     position: absolute;
     width: 35%;
@@ -301,12 +346,23 @@ body {
 .box-title {
     font-size: var(--font-bigger);
     position: absolute;
-    bottom: 15%;
+    bottom: 20%;
     color: white;
-    transition: 0.3s;
     border: 0;
     background-color: transparent;
     cursor: grab;
+    transition: 0.3s;
+}
+
+.large-box-text {
+    font-size: var(--font-standard);
+    position: absolute;
+    bottom: 15%;
+    color: white;
+    border: 0;
+    background-color: transparent;
+    cursor: grab;
+    transition: 0.3s;
 }
 
 .box-text {
@@ -327,7 +383,7 @@ body {
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
-    color: grey;
+    color: #335686;
 }
 
 .medical-information-container {
