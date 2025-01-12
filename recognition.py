@@ -14,7 +14,7 @@ class Recognition:
         self.images_bytes = []
         for line in peopleFile:
             try:
-                with open(f"{line.split(',')[0].rstrip('\n')}.jpg", "rb") as f:
+                with open(f"{line.split(',')[0].rstrip()}.jpg", "rb") as f:
                     self.images_bytes.append(f.read())
             except:
                 print(f"Error: {line.split(',')[0]}.jpg has not been found")

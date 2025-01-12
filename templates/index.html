@@ -20,7 +20,6 @@
     <div class="landing-container">
         <h1 class="landing-title">MedID</h1>
         <p class="landing-text">A Deltahacks Project</p>
-        <div class="arrow-down" id="arrowButton"><i class="fa-solid fa-circle-arrow-down arrow-down-icon"></i></div>
     </div>
 
 
@@ -47,8 +46,10 @@
 
     <div class="content-container">
         <div class="large-box box visible" id="largeBoxFront"><h3 class="box-title">Learn More <i class="fa-solid fa-arrow-right"></i></h3></div>
-        <div class="large-box box not-visible" id="largeBoxBack"><h3 class="box-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur perspiciatis doloremque sequi minima sint dolor quas culpa, laudantium corporis ex iusto totam itaque perferendis voluptate laborum aliquid quo repudiandae magni.</h3></div>
-        <div class="small-box box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime earum eos ea sint deleniti fugiat asperiores, repellendus doloremque ipsa, rem error, quas recusandae inventore quasi laboriosam neque aspernatur fuga. Recusandae.</div>
+        <div class="large-box box not-visible" id="largeBoxBack"><h3 class="box-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur perspiciatis doloremque sequi minima sint dolor quas culpa, laudantium corporis ex iusto totam itaque perferendis voluptate laborum aliquid quo repudiandae magni. lorem</h3></div>
+        <div class="small-box box">
+            <img src="static/media/frame-image.png" class="frame-image">
+        </div>
     </div>
 
     <div class="footer-container">
@@ -99,42 +100,6 @@
             largeBoxFront.classList.remove("not-visible");
             largeBoxFront.classList.add("visible");
         });
-
-        const arrowButton = document.getElementById("arrowButton");
-
-        arrowButton.addEventListener("click", () => {
-            window.scrollBy({
-            top: 750,
-            behavior: "smooth",
-            });
-        })
-
-        function toggleFullscreen() {
-        const elem = document.getElementById('video_stream');
-
-        if (!document.fullscreenElement) {
-            if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { /* Firefox */
-            elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari */
-            elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { /* IE/Edge */
-            elem.msRequestFullscreen();
-            }
-        } else {
-            if (document.exitFullscreen) {
-            document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-            }
-        }
-        }
-
     </script>
 
 </body>
