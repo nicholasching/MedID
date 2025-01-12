@@ -87,11 +87,11 @@
             if (result != "False"){
                 patientInfo = result.split(",");
                 console.log(patientInfo)
-
                 window.location.href = "/patientinfo";
             }
             else{
                 patientInfo[0] = "null"
+                window.location.href = "/patientinfo";
             }
         }
 
