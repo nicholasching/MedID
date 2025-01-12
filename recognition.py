@@ -3,24 +3,42 @@ from google import genai
 from google.genai import types
 from dotenv import load_dotenv, dotenv_values
 
-load_dotenv()
-model = genai.Client(api_key=os.environ["API_KEY"])
+class Recognition:
+    def __init__(self):
+        load_dotenv()
+        self.model = genai.Client(api_key=os.environ["API_KEY"])
+        self.mimeType = 'image/jpeg'
 
-# Hashcode, Name
-mimeType = 'image/jpeg'
-peopleFile = open("people.txt", "r")
-images_bytes = []
-for line in peopleFile:
-    try:
-        with open(f"{line.split(",")[0].rstrip("\n")}.jpg", "rb") as f:
-            images_bytes.append(f.read())
-    except:
-        print(f"Error: {line.split(",")[0]}.jpg has not been found")
-peopleFile.close()
+    def loadImages(self):
+        peopleFile = open("med_info.txt", "r")
+        self.images_bytes = []
+        for line in peopleFile:
+            try:
+                with open(f"{line.split(",")[0].rstrip("\n")}.jpg", "rb") as f:
+                    self.images_bytes.append(f.read())
+            except:
+                print(f"Error: {line.split(",")[0]}.jpg has not been found")
+        peopleFile.close()
 
-response = model.models.generate_content(model='gemini-2.0-flash-exp', contents=[
-    types.Part.from_text('Which image does the last image best resemble? Simply output the index of image, starting with index 0.'),
-    [types.Part.from_bytes(data=images_bytes[i], mime_type=mimeType)
-    for i in range(len(images_bytes))]
-])
-print(response.text)
+    def processNew(self):
+        try:
+            with open("temp.jpg", "rb") as f:
+                self.images_bytes.append(f.read())
+        except:
+            print("Error: temp.jpg has not been found")
+        
+        newIndex = self.runIdent()
+
+        if newIndex == -1:
+            self.images_bytes.pop()
+            return False
+        else:
+            return newIndex
+
+    def runIdent(self):
+        response = self.model.models.generate_content(model='gemini-2.0-flash-exp', contents=[
+            types.Part.from_text('Return the index of the image, starting at 0, of the person that matches the last image. If a near perfect match is not found, output -1.'),
+            [types.Part.from_bytes(data=self.images_bytes[i], mime_type=self.mimeType)
+            for i in range(len(self.images_bytes))]
+        ])
+        return response.text

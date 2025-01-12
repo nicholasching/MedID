@@ -1,8 +1,10 @@
 from flask import Flask, Response, render_template
+from recognition import Recognition
 import cv2
 import time
 import os
 import numpy as np
+import argparse
 
 app = Flask(__name__)
 
@@ -17,10 +19,8 @@ if not video_source.isOpened():
 # Adjustment Tolerances
 tolerance = 0.9
 
-#Import the neccesary libraries
-import numpy as np
-import argparse
-import cv2 
+# Constructing Gemini Endpoint
+gemini = Recognition()
 
 # construct the argument parse 
 parser = argparse.ArgumentParser(
@@ -96,7 +96,7 @@ def process_frames(frame):
             # Print label and confidence of prediction
             if class_id in classNames:
                 label = classNames[class_id] + ": " + str(confidence)
-                print(label) #print class and confidence
+                # print(label) #print class and confidence
                 if(classNames[class_id] == "person" and confidence > tolerance):
                     cv2.putText(frame, "Person Detected", (25, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.2*heightFactor, (255, 255, 255))
                     croppedFrame = frame[yLeftBottom:yRightTop, xLeftBottom:xRightTop]
@@ -104,7 +104,11 @@ def process_frames(frame):
 
 def generate_frames():
     isCapturing = True
-    isSaving = True
+    isSaving = True                         # DELETE PAST TEMP WHENEVER ISSAVING IS SET TO TRUE
+    try:
+        os.remove("temp.jpg")
+    except:
+        pass
     lastFailTime = time.time()
     while isCapturing:
         success, frame = video_source.read()
@@ -117,7 +121,7 @@ def generate_frames():
         if type(croppedFrame) != np.ndarray:
             lastFailTime = time.time()
         else:
-            print((time.time() - lastFailTime))
+            # print((time.time() - lastFailTime))                       # Print time elapsed
             if not (time.time() - lastFailTime) < 3 and isSaving:
                 cv2.imwrite("temp.jpg", croppedFrame)
                 isSaving = False
@@ -134,6 +138,7 @@ def video_feed():
 
 @app.route('/await_client/', methods=['POST'])
 def await_client():
+    gemini.loadImages()
     while True:
         if(os.path.exists("temp.jpg")):
             break
@@ -141,7 +146,7 @@ def await_client():
 
 @app.route('/fetch_details/', methods=['POST'])
 def fetch_details():
-    print("DONE!")
+    print(gemini.processNew())
     return ""
 
 @app.route('/')
