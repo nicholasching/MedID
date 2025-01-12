@@ -153,6 +153,9 @@ def fetch_details():
     index = file.readLine(gemini.processNew())
     f.write(index)
     f.close()
+    if index != "False":
+        print("delete")
+        gemini.discardNew()
     return index                                       # If returning "False" to BE, then create new profile instead of read
 
 @app.route('/get_details/', methods=['POST'])
@@ -160,6 +163,7 @@ def get_details():
     f = open("temp.txt", 'r')
     index = f.read()
     f.close()
+    print(index)
     return index
 
 @app.route('/update_details/<newLine>', methods=['POST'])
