@@ -21,6 +21,19 @@
 
     <script>
         let patientInfo = [20];
+        getDetails();
+
+        async function getDetails(){
+            const response = await fetch("/get_details/", {
+                method: "POST",
+            });
+            let result = await response.text();
+            console.log(result)
+            if (result != "False"){
+                patientInfo = result.split(",");
+                console.log(patientInfo)
+            }
+        }
         
     </script>
 </body>

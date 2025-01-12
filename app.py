@@ -23,6 +23,7 @@ tolerance = 0.9
 # Constructing Gemini Endpoint
 gemini = Recognition()
 file = FileUtil()
+detailSave = None
 
 # construct the argument parse 
 parser = argparse.ArgumentParser(
@@ -148,7 +149,18 @@ def await_client():
 
 @app.route('/fetch_details/', methods=['POST'])
 def fetch_details():
-    return file.readLine(gemini.processNew())               # If returning "False" to BE, then create new profile instead of read
+    f = open("temp.txt", "w")
+    index = file.readLine(gemini.processNew())
+    f.write(index)
+    f.close()
+    return index                                       # If returning "False" to BE, then create new profile instead of read
+
+@app.route('/get_details/', methods=['POST'])
+def get_details():
+    f = open("temp.txt", 'r')
+    index = f.read()
+    f.close()
+    return index
 
 @app.route('/')
 def home():
