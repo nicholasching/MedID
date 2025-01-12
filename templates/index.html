@@ -7,8 +7,6 @@
 
     <link rel="stylesheet" href="static/styles.css">
 
-    <link rel="stylesheet" href="static/arianna.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -20,7 +18,8 @@
     <div class="landing-container">
         <h1 class="landing-title">MedID</h1>
         <p class="landing-text">A Deltahacks Project</p>
-        <img class="dinosaur-image" src="static/media/dinosaur-image.png">
+        <img class="dinosaur-image1" src="static/media/dinosaur-image1.png">
+        <img class="dinosaur-image2" src="static/media/dinosaur-image2.png">
     </div>
 
 
@@ -40,8 +39,7 @@
         <h2 class="webcam-title">Introducing <span style="color: rgb(255, 196, 0);">Project</span>,<br> a face recognitition healthcare tool</h2>
         <p class="webcam-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus delectus fugiat fugit adipisci id cupiditate accusantium excepturi.</p>
         <div class="video-container">
-            <img src="/video_feed" id="video_stream" class="webcam-preview visible" onclick="toggleFullscreen()" id="webcamPreview">
-            <div class="webcam-preview not-visible" style="padding: 10%;" id="medicalInformation">Med information Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae esse delectus quos aut aliquam reprehenderit consequuntur ea, placeat incidunt! Tenetur sit laudantium odio illo praesentium. Magnam minus deserunt perspiciatis esse?</div>
+            <img src="/video_feed" id="video_stream" class="webcam-preview" onclick="toggleFullscreen()" id="webcamPreview">
             <h3 class="video-text">Demonstration</h3>
         </div>
     </div>
@@ -93,9 +91,6 @@
             else{
                 patientInfo[0] = "null"
             }
-
-
-
         }
 
         awaitClient()
