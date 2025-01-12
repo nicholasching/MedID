@@ -1,5 +1,6 @@
 from flask import Flask, Response, render_template
 from recognition import Recognition
+from fileutil import FileUtil
 import cv2
 import time
 import os
@@ -21,6 +22,7 @@ tolerance = 0.9
 
 # Constructing Gemini Endpoint
 gemini = Recognition()
+file = FileUtil()
 
 # construct the argument parse 
 parser = argparse.ArgumentParser(
@@ -146,8 +148,7 @@ def await_client():
 
 @app.route('/fetch_details/', methods=['POST'])
 def fetch_details():
-    print(gemini.processNew())
-    return ""
+    return file.readLine(gemini.processNew())               # If returning "False" to BE, then create new profile instead of read
 
 @app.route('/')
 def home():
