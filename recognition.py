@@ -14,10 +14,10 @@ class Recognition:
         self.images_bytes = []
         for line in peopleFile:
             try:
-                with open(f"{line.split(",")[0].rstrip("\n")}.jpg", "rb") as f:
+                with open(f"{line.split(',')[0].rstrip('\n')}.jpg", "rb") as f:
                     self.images_bytes.append(f.read())
             except:
-                print(f"Error: {line.split(",")[0]}.jpg has not been found")
+                print(f"Error: {line.split(',')[0]}.jpg has not been found")
         peopleFile.close()
 
     def processNew(self):
@@ -29,11 +29,14 @@ class Recognition:
         
         newIndex = self.runIdent()
 
-        if newIndex == -1:
-            self.images_bytes.pop()
+        if int(newIndex) == -1:
             return False
         else:
+            self.images_bytes.pop()
             return newIndex
+        
+    def discardNew(self):
+        self.images_bytes.pop()
 
     def runIdent(self):
         response = self.model.models.generate_content(model='gemini-2.0-flash-exp', contents=[
