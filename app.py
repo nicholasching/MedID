@@ -162,6 +162,21 @@ def get_details():
     f.close()
     return index
 
+@app.route('/update_details/<newLine>', methods=['POST'])
+def update_details(newLine):
+    file.updateLine(newLine)
+    return ""
+
+@app.route('/new_details/<newLine>', methods=['POST'])
+def new_details(newLine):
+    file.newLine(newLine)
+    file.saveImage(newLine)
+    return ""
+
+@app.route('/get_time/', methods=['POST'])
+def get_time():
+    return str(f'{time.time():.0f}')
+
 @app.route('/')
 def home():
     return render_template('index.html')

@@ -31,7 +31,7 @@
             <label>Address: <input type="text" id="address" value=""></label>
             <label>Emergency Contact <input type="text" id="emergency" value=""></label>
             <label id="update"></label>
-            <button onclick="updateArray()">Update</button>
+            <button onclick="save()">Update</button>
         </div>
     </div>
 
@@ -39,6 +39,7 @@
 
     <script>
         let patientInfo = []*20;
+        let isNew = false
         getDetails();
 
         async function getDetails(){
@@ -50,6 +51,15 @@
             if (result != "False"){
                 patientInfo = result.split(",");
                 console.log(patientInfo)
+            }
+            else{
+                isNew = true
+                const response = await fetch("/get_time/", {
+                    method: "POST",
+                });
+                let result = await response.text();
+                patientInfo = [result]
+                console.log(patientInfo[0])
             }
             document.getElementById("hashcode").innerHTML = "Medical Info: " + patientInfo[0];
             
@@ -86,10 +96,31 @@
             document.getElementById("update").innerHTML = "Last Update: " + patientInfo[11];
         }
 
-        function updateArray() {
-        const nameInput = document.getElementById("name");
-        patientInfo[1] = nameInput.value; 
-        console.log(patientInfo); // Output: Updated array 
+        async function save() {
+            // For Existing Files
+            if(!isNew){
+                const nameInput = document.getElementById("name");
+                patientInfo[1] = nameInput.value; 
+                console.log(patientInfo); // Output: Updated array 
+                console.log(patientInfo.toString())
+                const response = await fetch("/update_details/"+patientInfo.toString(), {
+                    method: "POST",
+                });
+                let result = await response.text();
+            }
+            // For New Files
+            else{
+                const nameInput = document.getElementById("name");
+                patientInfo.push(nameInput.value) 
+                console.log(patientInfo); // Output: Updated array 
+                console.log(patientInfo.toString())
+                const response = await fetch("/new_details/"+patientInfo.toString(), {
+                    method: "POST",
+                });
+                let result = await response.text();
+                isNew = false
+            }
+            
         }
 
 
