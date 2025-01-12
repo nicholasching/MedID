@@ -21,7 +21,7 @@ body {
 
 @keyframes scroll {
     to {
-        transform: translateX(-100%)
+        transform: translateX(calc(-100% - 30px))
     }
 }
 
@@ -107,16 +107,27 @@ body {
 
 @keyframes dinosaurMovement4 {
     from {
-        transform: translate(0vw, -20vw) rotate(10deg);
+        transform: translate(10vw, -20vw) rotate(180deg);
     }
     50% {
-        transform: translate(15vw, 40vw) rotate(-300deg);
+        transform: translate(15vw, 10vw) rotate(-300deg);
     }
     70% {
-        transform: translateX(20vw) rotate(30deg);
+        transform: translateX(30vw) rotate(30deg);
     }
     to {
-        transform: translate(0vw, -30vw) rotate(10deg);
+        transform: translate(10vw, -20vw) rotate(180deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -126,9 +137,11 @@ body {
     justify-content: center;
     text-align: center;
     margin: 20% 0 15%;
+    animation: fadeIn 2s forwards;
 }
 
 .landing-title {
+    font-family: "Inconsolata", serif;
     font-size: var(--font-big);
 }
 
@@ -143,25 +156,26 @@ body {
 }
 
 .dinosaur-image-1 {
-    animation: dinosaurMovement1 60s infinite linear;
+    animation: dinosaurMovement1 40s infinite linear;
 }
 
 .dinosaur-image-2 {
-    animation: dinosaurMovement2 30s infinite linear;
+    animation: dinosaurMovement2 40s infinite linear;
 }
 
 .dinosaur-image-3 {
-    animation: dinosaurMovement3 40s infinite linear;
+    animation: dinosaurMovement3 50s infinite linear;
 }
 
 .dinosaur-image-4 {
-    animation: dinosaurMovement3 120s infinite linear;
+    animation: dinosaurMovement4 80s infinite linear;
 }
 
 .content-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    animation: fadeIn 2s forwards;
 }
 
 .webcam-container {
@@ -171,6 +185,7 @@ body {
     flex-direction: column;
     text-align: center;
     margin-bottom: 10%;
+    animation: fadeIn 2s forwards;
 }
 
 .infinite-scroller {
@@ -182,6 +197,7 @@ body {
     overflow: hidden;
     user-select: none;
     margin-bottom: 3%;
+    gap: 30px;
 }
 
 .infinite-scroller ul {
@@ -210,12 +226,19 @@ body {
     margin-bottom: 10%;
 }
 
+.webcam-title-bold {
+    color: rgb(255, 196, 0); 
+    font-family: 'Inconsolata'; 
+    font-size: clamp(3rem, 4.5vw, 10rem);
+    transition: 0.75s;
+    &:hover {
+        font-size: clamp(3rem, 5vw, 10rem);
+    }
+}
+
 .video-container {
     position: relative;
     width: 100%;
-    &:hover {
-        cursor: grab;
-    }
 }
 
 .video-text {
@@ -308,38 +331,87 @@ body {
 }
 
 .medical-information-container {
-    margin: 10% 15%;
+    position: relative;
+    margin: 3% 15%;
     display: flex;
     background-color: #335686;
-    padding: 3%;
+    padding: 7%;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
-    gap: 10%;
+    animation: fadeIn 2s forwards;
+}
+
+.medical-information-title {
+    color: #f4b52a
 }
 
 .profile-image {
-    width: 30%;
+    width: 40%;
     border-radius: 10px;
+}
+
+.hashcode-style {
+    position: absolute;
+    opacity: 0.75;
+    right: 20px;
+    top: 20px;
 }
 
 .label-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: fit-content;
 }
 
 label {
     font-size: var(--font-small);
     font-weight: 300;
     color: white;
-
 }
 
 input {
     background-color: transparent;
     font-size: var(--font-small);
     border: none;
+    color: rgb(159, 159, 159);
+    width: fit-content;
+    transition: 0.5s;
+    width: min-content;
+    &:hover {
+        color: #f4b52a;
+    }
+}
+
+.save-button {
+    margin-top: 5%;
+    width: 40%;
+    font-size: var(--font-smaller);
+    background-color: #ffffff;
+    border: 0;
+    border-radius: 5px;
+    transition: 0.3s;
+    &:hover {
+        scale: 1.1;
+    }
+}
+
+.line {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background-color: #f4b52a;
+    bottom: 30px;
+    left: 0;
+}
+
+.heart-icon {
+    font-size: var(--font-bigger);
+    position: absolute;
+    bottom: 10px;
+    right: 50px;
+    color: #e83c94;
 }
 
 .return-button {
@@ -352,8 +424,10 @@ input {
     transition: 0.2s;
     padding: 10px;
     border-radius: 10px;
+    text-decoration: none;
+    color: #335686;
     &:hover {
-        background-color: rgb(225, 225, 225);
+        background-color: #f4b52a;
         scale: 1.1;
     }
     .icon {

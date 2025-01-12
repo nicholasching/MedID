@@ -9,12 +9,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 </head>
 <body>
+
     <div class="landing-container">
         <h1 class="landing-title">MedID</h1>
         <p class="landing-text">A Deltahacks Project</p>
@@ -38,8 +39,8 @@
                 </li>
             </ul>
         </div>
-        <h2 class="webcam-title">Introducing <span style="color: rgb(255, 196, 0);">Project</span>,<br> a face recognitition healthcare tool</h2>
-        <p class="webcam-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus delectus fugiat fugit adipisci id cupiditate accusantium excepturi.</p>
+        <h2 class="webcam-title">Introducing <span class="webcam-title-bold">MedID</span>,<br> a face recognitition healthcare tool</h2>
+        <p class="webcam-text">MedID enables seamless patient admission, providing easy access to their medical charts, which include crucial information such as personal details and medical history. </p>
         <div class="video-container">
             <img src="/video_feed" id="video_stream" class="webcam-preview" onclick="toggleFullscreen()" id="webcamPreview">
             <h3 class="video-text">Demonstration</h3>
@@ -48,7 +49,7 @@
 
     <div class="content-container">
         <div class="large-box box visible" id="largeBoxFront"><h3 class="box-title">Learn More <i class="fa-solid fa-arrow-right"></i></h3></div>
-        <div class="large-box box not-visible" id="largeBoxBack"><h3 class="box-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur perspiciatis doloremque sequi minima sint dolor quas culpa, laudantium corporis ex iusto totam itaque perferendis voluptate laborum aliquid quo repudiandae magni. lorem</h3></div>
+        <div class="large-box box not-visible" id="largeBoxBack"><h3 class="box-text">A pretrained model neural network identifies the person in the picture frame. When the system identifies the subject with a high degree of confidence, it takes a screenshot of the bounding box. The image of the person is then compared to others in the database, scanning for a match. When the match is found, the medical chart of the patient is linked, allowing medical professionals to access it when the patient is admitted to the hospital. </h3></div>
         <div class="small-box box">
             <img src="static/media/frame-image.png" class="frame-image">
         </div>

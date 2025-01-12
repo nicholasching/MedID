@@ -16,10 +16,10 @@
 </head>
 <body>
     <div class="medical-information-container">
-        <img id="myImage" src="static/media/temp.jpg" class="profile-image">
-        <div class="label-container">
 
-            <label id="hashcode"></label>
+        <div class="label-container">
+            <h1 class="medical-information-title">Medical Information</h1>
+            <label class="hashcode-style" id="hashcode"></label>
             <label>Name: <input type="text" id="name" value=""></label>
             <label>Birthday: <input type="text" id="birthday" value=""></label>
             <label>Gender: <input type="text" id="gender" value=""></label>
@@ -31,8 +31,11 @@
             <label>Address: <input type="text" id="address" value=""></label>
             <label>Emergency Contact <input type="text" id="emergency" value=""></label>
             <label id="update"></label>
-            <button onclick="save()">Update</button>
+            <button class="save-button" onclick="save()">Save</button>
+            <div class="line"></div>
+            <i class="fa-solid fa-heart heart-icon"></i>
         </div>
+        <img id="myImage" src="static/media/temp.jpg" class="profile-image">
     </div>
 
     <a class="return-button" href="/"><i class="fa-solid fa-arrow-left icon"></i> Return</a>
@@ -61,7 +64,7 @@
                 patientInfo = [result]
                 console.log(patientInfo[0])
             }
-            document.getElementById("hashcode").innerHTML = "Medical Info: " + patientInfo[0];
+            document.getElementById("hashcode").innerHTML = patientInfo[0];
             
             const name = document.getElementById("name");
             name.value = patientInfo[1]; 
@@ -120,10 +123,7 @@
                 let result = await response.text();
                 isNew = false
             }
-            
         }
-
-
         
     </script>
 </body>
