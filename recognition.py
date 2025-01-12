@@ -40,8 +40,8 @@ class Recognition:
 
     def runIdent(self):
         response = self.model.models.generate_content(model='gemini-2.0-flash-exp', contents=[
-            types.Part.from_text('Return the index of the image, starting at 0, of the person that matches the last image. If a near perfect match is not found, output -1.'),
+            types.Part.from_text('Return the index of the image of the person that matches the last image. If a near perfect match is not found, output 0.'),
             [types.Part.from_bytes(data=self.images_bytes[i], mime_type=self.mimeType)
             for i in range(len(self.images_bytes))]
         ])
-        return response.text
+        return str(int(response.text) - 1)

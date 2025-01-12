@@ -98,12 +98,31 @@
 
             document.getElementById("update").innerHTML = "Last Update: " + patientInfo[11];
         }
-
+        
         async function save() {
             // For Existing Files
             if(!isNew){
                 const nameInput = document.getElementById("name");
+                const birthday = document.getElementById("birthday");
+                const gender = document.getElementById("gender");     
+                const height = document.getElementById("height");
+                const weight = document.getElementById("weight");
+                const blood = document.getElementById("blood");
+                const conditions = document.getElementById("conditions");
+                const medications = document.getElementById("medications");
+                const address = document.getElementById("address");
+                const emergency = document.getElementById("emergency");
                 patientInfo[1] = nameInput.value; 
+                patientInfo[2] = birthday.value; 
+                patientInfo[3] = gender.value; 
+                patientInfo[4] = height.value; 
+                patientInfo[5] = weight.value; 
+                patientInfo[6] = blood.value; 
+                patientInfo[7] = conditions.value; 
+                patientInfo[8] = medications.value;
+                patientInfo[9] = address.value; 
+                patientInfo[10] = emergency.value; 
+                // patientInfo[11] = (new Date()).toISOString().split('T')[0];
                 console.log(patientInfo); // Output: Updated array 
                 console.log(patientInfo.toString())
                 const response = await fetch("/update_details/"+patientInfo.toString(), {
@@ -114,7 +133,26 @@
             // For New Files
             else{
                 const nameInput = document.getElementById("name");
+                const birthday = document.getElementById("birthday");
+                const gender = document.getElementById("gender");     
+                const height = document.getElementById("height");
+                const weight = document.getElementById("weight");
+                const blood = document.getElementById("blood");
+                const conditions = document.getElementById("conditions");
+                const medications = document.getElementById("medications");
+                const address = document.getElementById("address");
+                const emergency = document.getElementById("emergency");
                 patientInfo.push(nameInput.value) 
+                patientInfo.push(birthday.value) 
+                patientInfo.push(gender.value) 
+                patientInfo.push(height.value) 
+                patientInfo.push(weight.value) 
+                patientInfo.push(blood.value) 
+                patientInfo.push(conditions.value) 
+                patientInfo.push(medications.value) 
+                patientInfo.push(address.value) 
+                patientInfo.push(emergency.value) 
+                patientInfo.push((new Date()).toISOString().split('T')[0]) 
                 console.log(patientInfo); // Output: Updated array 
                 console.log(patientInfo.toString())
                 const response = await fetch("/new_details/"+patientInfo.toString(), {

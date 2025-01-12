@@ -22,6 +22,10 @@ class FileUtil:
                 shutil.copy(f"{returnStatement.split(',')[0]}.jpg", "static/media/temp.jpg")
             except:
                 peopleFile.close()
+                try:
+                    shutil.copy("temp.jpg", "static/media/temp.jpg")
+                except:
+                    pass
                 return "False"
             peopleFile.close()
             print(returnStatement)

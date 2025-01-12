@@ -125,7 +125,7 @@ def generate_frames():
             lastFailTime = time.time()
         else:
             # print((time.time() - lastFailTime))                       # Print time elapsed
-            if not (time.time() - lastFailTime) < 3 and isSaving:
+            if not (time.time() - lastFailTime) < 1 and isSaving:
                 cv2.imwrite("temp.jpg", croppedFrame)
                 isSaving = False
 
