@@ -1,3 +1,3 @@
-1736647358, Katelyn, Li, 2006, 07, 10, F, 48, 160,  A-, type 1 diabetes; depressed, insulin; citalopram,  DNR, Lotte World, Arianna Ansari 1112365725; Dylan Li 7054119727, Sand Life, 10-01-2025
-1736647360, Arianna, Ansari, 1967, 01, 27, F, 62, A+, ADHD; iron defficiency, propanolol; iron,  N/A, Ripleys Aquarium, Katelyn Li 9876542468; Nic Ching 9057054372, Apart, 10-01-2025
-1736647365, Dylan Li, COMPLETE
+1736647358,Katelyn Li,07/10/2006,F,140,60,A-,type 1 diabetes; depressed,insulin; citalopram,Lotte World,Mark: 1112365725,01/01/2025
+1736647360,Arianna Ansari,06/26/2006,F,145,65,A+,ADHD; iron defficiency,propanolol; iron,Ripleys Aquarium,Joe: 9876542468,01/02/2025
+1736647365,Dylan Li,08/29/2006,M,145,68,O+,N/A,N/A,McMaster University,Bob: 9057715454,01/03/2025
