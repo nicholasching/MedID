@@ -60,6 +60,21 @@ body {
     }
 }
 
+@keyframes dinosaurMovement {
+    from {
+        transform: translateX(0) rotate(0deg);
+    }
+    30% {
+        transform: translate(30vw, 10vw) rotate(90deg);
+    }
+    50% {
+        transform: translateX(90vw) rotate(45deg);
+    }
+    to {
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
 .landing-container {
     display: flex;
     flex-direction: column;
@@ -76,6 +91,12 @@ body {
 .landing-text {
     font-size: var(--font-standard);
     margin-bottom: 10%;
+}
+
+.dinosaur-image {
+    position: absolute;
+    width: 10%;
+    animation: dinosaurMovement 20s infinite;
 }
 
 .content-container {
@@ -207,6 +228,7 @@ body {
 }
 
 .box-text {
+    color: white;
     font-size: var(--font-standard);
 }
 
