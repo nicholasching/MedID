@@ -67,7 +67,7 @@ body {
     30% {
         transform: translate(30vw, 10vw) rotate(90deg);
     }
-    50% {
+    70% {
         transform: translateX(90vw) rotate(45deg);
     }
     to {
@@ -77,16 +77,46 @@ body {
 
 @keyframes dinosaurMovement2 {
     from {
-        transform: translateX(0) rotate(0deg);
+        transform: translate(90vw, -20vw) rotate(0deg);
     }
-    30% {
-        transform: translate(-20vw, 40vw) rotate(10deg);
+    40% {
+        transform: translate(-5vw, -10vw) rotate(-60deg);
     }
-    50% {
-        transform: translateX(40vw) rotate(20deg);
+    70% {
+        transform: translate(40vw, 1vw) rotate(-190deg);
     }
     to {
-        transform: translateX(0) rotate(0deg);
+        transform: translate(90vw, -20vw) rotate(0deg);
+    }
+}
+
+@keyframes dinosaurMovement3 {
+    from {
+        transform: translate(60vw, 20vw) rotate(20deg);
+    }
+    50% {
+        transform: translate(80vw, -30vw) rotate(180deg);
+    }
+    70% {
+        transform: translateX(70vw) rotate(90deg);
+    }
+    to {
+        transform: translate(60vw, 20vw) rotate(20deg);
+    }
+}
+
+@keyframes dinosaurMovement4 {
+    from {
+        transform: translate(0vw, -20vw) rotate(10deg);
+    }
+    50% {
+        transform: translate(15vw, 40vw) rotate(-300deg);
+    }
+    70% {
+        transform: translateX(20vw) rotate(30deg);
+    }
+    to {
+        transform: translate(0vw, -30vw) rotate(10deg);
     }
 }
 
@@ -107,10 +137,25 @@ body {
     margin-bottom: 10%;
 }
 
-.dinosaur-image-1 {
+.dinosaur-image {
     position: absolute;
     width: 10%;
-    animation: dinosaurMovement 20s infinite;
+}
+
+.dinosaur-image-1 {
+    animation: dinosaurMovement1 60s infinite linear;
+}
+
+.dinosaur-image-2 {
+    animation: dinosaurMovement2 30s infinite linear;
+}
+
+.dinosaur-image-3 {
+    animation: dinosaurMovement3 40s infinite linear;
+}
+
+.dinosaur-image-4 {
+    animation: dinosaurMovement3 120s infinite linear;
 }
 
 .content-container {
